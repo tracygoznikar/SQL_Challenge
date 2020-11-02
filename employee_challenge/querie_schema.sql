@@ -30,6 +30,26 @@ department.dept_no=dept_emp.dept_no;
 --List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
 select first_name, last_name, sex from employee where first_name = 'Hercules' and last_name like '%B%';
 
+--List all employees in the Sales department, including their employee number, last name, first name, and department name
+select employee.emp_no, employee.last_name, employee.first_name, department.dept_name
+from employee
+inner join dept_emp on 
+employee.emp_no=dept_emp.emp_no 
+inner join department on
+department.dept_no=dept_emp.dept_no
+where dept_name = 'Sales';
+
+--List all employees in the Sales and Development departments, including their employee number, last name, 
+--first name, and department name.
+select employee.emp_no, employee.last_name, employee.first_name, department.dept_name
+from employee
+inner join dept_emp on 
+employee.emp_no=dept_emp.emp_no 
+inner join department on
+department.dept_no=dept_emp.dept_no
+where dept_name = 'Sales' or dept_name = 'Development';
+
+
 
 select * from employee;
 select * from dept_manager;
